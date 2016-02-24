@@ -1,0 +1,6 @@
+-x objective-c
+-fobjc-arc
+-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator9.2.sdk
+-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+-F/Users/fimkap/Library/Developer/Xcode/DerivedData/CurrentAddress-bbuqpqzwjlkmxggzltbbqvdbjenv/Build/Products/Debug-iphonesimulator
+-Weverything
