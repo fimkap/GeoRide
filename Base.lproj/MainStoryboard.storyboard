@@ -25,9 +25,11 @@
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRL-9Y-fB7">
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VLf-lv-sTv"/>
-                                    <barButtonItem enabled="NO" title="Get Current Address" style="plain" id="oLE-To-3IS">
+                                    <barButtonItem enabled="NO" title="Enter your destination" style="plain" id="oLE-To-3IS">
+                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="fRf-KV-5UV" kind="show" identifier="pushToDetail" id="ERJ-fT-7SL"/>
                                         </connections>

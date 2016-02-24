@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "PlacemarkViewController.h"
+#import "MKMapView+ZoomLevel.h"
 
 @interface MapViewController () <CLLocationManagerDelegate>
 
@@ -51,7 +52,7 @@
 
 	if ((userLocation.coordinate.latitude != 0.0) && (userLocation.coordinate.longitude != 0.0)) {
 		dispatch_once(&centerMapFirstTime, ^{
-			[self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+            [self.mapView setCenterCoordinate:userLocation.coordinate zoomLevel:10 animated:YES];
 		});
 	}
 	
