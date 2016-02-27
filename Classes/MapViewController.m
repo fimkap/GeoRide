@@ -45,6 +45,21 @@
     }
 }
 
+- (IBAction)selectDestination:(id)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Destination" message:@"Select destination" preferredStyle:UIAlertControllerStyleActionSheet];
+    NSArray *places = [NSArray arrayWithObjects:@"Fuengirola", @"Benalmadena", @"Torremolinos", nil];
+    for (NSString *place in places)
+    {
+        [alert addAction:[UIAlertAction actionWithTitle:place
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction *action) {
+                                                    NSLog(@"handler");
+                                                    }]];
+    }
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
 	// Center the map the first time we get a real location change.
