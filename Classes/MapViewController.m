@@ -9,6 +9,9 @@
 #import "MapViewController.h"
 #import "PlacemarkViewController.h"
 #import "MKMapView+ZoomLevel.h"
+#import "NearbyPlaces.h"
+
+#define MAX_NUM_PLACES 4
 
 @interface MapViewController () <CLLocationManagerDelegate>
 
@@ -17,6 +20,7 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) MKPlacemark *placemark;
+@property (nonatomic, strong) NearbyPlaces *nearbyPlaces;
 
 @end
 
@@ -33,9 +37,11 @@
     [self.locationManager requestWhenInUseAuthorization];
 
     self.geocoder = [[CLGeocoder alloc] init];
+    
+    self.nearbyPlaces = [[NearbyPlaces alloc] init];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(__unused id)sender
 {
     if ([segue.identifier isEqualToString:@"pushToDetail"])
     {
@@ -45,22 +51,44 @@
     }
 }
 
-- (IBAction)selectDestination:(id)sender
+- (IBAction)selectDestination:(__unused id)sender
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Destination" message:@"Select destination" preferredStyle:UIAlertControllerStyleActionSheet];
-    NSArray *places = [NSArray arrayWithObjects:@"Fuengirola", @"Benalmadena", @"Torremolinos", nil];
-    for (NSString *place in places)
-    {
-        [alert addAction:[UIAlertAction actionWithTitle:place
-                                                  style:UIAlertActionStyleDefault
-                                                handler:^(UIAlertAction *action) {
-                                                    NSLog(@"handler");
-                                                    }]];
-    }
-    [self presentViewController:alert animated:YES completion:nil];
+    //NSArray *places = [NSArray arrayWithObjects:@"Fuengirola", @"Benalmadena", @"Torremolinos", nil];
+    [self.nearbyPlaces arrayOfPlaces:self.mapView withCompletionHandler:^(NSArray *places, __unused NSError *error) {
+        NSMutableArray *mutablePlaces = [places mutableCopy];
+        if (mutablePlaces.count > MAX_NUM_PLACES) {
+            NSRange r;
+            r.location = MAX_NUM_PLACES;
+            r.length = mutablePlaces.count - MAX_NUM_PLACES;
+            [mutablePlaces removeObjectsInRange:r];
+        }
+        for (MKMapItem *place in mutablePlaces)
+        {
+            [alert addAction:[UIAlertAction actionWithTitle:place.name
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(__unused UIAlertAction *action) {
+                                                        NSLog(@"handler");
+                                                        }]];
+        }
+
+        [alert addAction:[UIAlertAction actionWithTitle:@"Other Destination"
+                   style:UIAlertActionStyleDefault
+                 handler:^(__unused UIAlertAction *action) {
+                     NSLog(@"handler");
+                 }]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                   style:UIAlertActionStyleDefault
+                 handler:^(__unused UIAlertAction *action) {
+                     NSLog(@"handler");
+                 }]];
+
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
+
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+- (void)mapView:(__unused MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
 	// Center the map the first time we get a real location change.
 	static dispatch_once_t centerMapFirstTime;
@@ -72,7 +100,7 @@
 	}
 	
 	// Lookup the information for the current location of the user.
-    [self.geocoder reverseGeocodeLocation:self.mapView.userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
+    [self.geocoder reverseGeocodeLocation:self.mapView.userLocation.location completionHandler:^(NSArray *placemarks, __unused NSError *error) {
 		if ((placemarks != nil) && (placemarks.count > 0)) {
 			// If the placemark is not nil then we have at least one placemark. Typically there will only be one.
 			self.placemark = placemarks[0];
@@ -86,7 +114,7 @@
     }];
 }
 
-- (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
+- (void)mapView:(__unused MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
 
     self.getAddressButton.enabled = NO;
     
@@ -110,7 +138,7 @@
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)locationManager:(__unused CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusRestricted || status == kCLAuthorizationStatusDenied) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Location Disabled"
                                                                        message:@"Please enable location services in the Settings app."

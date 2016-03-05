@@ -4,4 +4,7 @@
 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
 -F/Users/fimkap/Library/Developer/Xcode/DerivedData/CurrentAddress-bbuqpqzwjlkmxggzltbbqvdbjenv/Build/Products/Debug-iphonesimulator
 -I./Categories
+-I./Model
 -Weverything
+-Wno-objc-missing-property-synthesis
+-Wno-nullable-to-nonnull-conversion
