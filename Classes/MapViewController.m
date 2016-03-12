@@ -21,6 +21,7 @@
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) MKPlacemark *placemark;
 @property (nonatomic, strong) NearbyPlaces *nearbyPlaces;
+@property (nonatomic, strong) NSMutableDictionary *nearbyPlacesLocationMap;
 
 @end
 
@@ -39,6 +40,7 @@
     self.geocoder = [[CLGeocoder alloc] init];
     
     self.nearbyPlaces = [[NearbyPlaces alloc] init];
+    self.nearbyPlacesLocationMap = [[NSMutableDictionary alloc] init];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(__unused id)sender
@@ -65,10 +67,12 @@
         }
         for (MKMapItem *place in mutablePlaces)
         {
+            [self.nearbyPlacesLocationMap setObject:place.placemark forKey:place.name];
             [alert addAction:[UIAlertAction actionWithTitle:place.name
                                                       style:UIAlertActionStyleDefault
-                                                    handler:^(__unused UIAlertAction *action) {
-                                                        NSLog(@"handler");
+                                                    handler:^(UIAlertAction *action) {
+                                                        MKPlacemark *pmark = [self.nearbyPlacesLocationMap objectForKey:action.title];
+                                                        NSLog(@"Location of destination [%f][%f]", pmark.coordinate.latitude, pmark.coordinate.longitude);
                                                         }]];
         }
 
