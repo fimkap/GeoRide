@@ -10,6 +10,7 @@
 #import "PlacemarkViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "NearbyPlaces.h"
+#import "UIImage+Color.h"
 
 #define MAX_NUM_PLACES 4
 
@@ -41,6 +42,9 @@
     
     self.nearbyPlaces = [[NearbyPlaces alloc] init];
     self.nearbyPlacesLocationMap = [[NSMutableDictionary alloc] init];
+
+    [[UIToolbar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor greenColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    //[[UIBarButtonItem appearance] setTintColor:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(__unused id)sender

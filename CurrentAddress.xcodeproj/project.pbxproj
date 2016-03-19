@@ -15,6 +15,7 @@
 		28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MapViewController.m */; };
 		2F14BFB51C7E6295002286BA /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F14BFB41C7E6295002286BA /* MKMapView+ZoomLevel.m */; };
 		2F14BFBC1C8070CD002286BA /* NearbyPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */; };
+		2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E90BD1C9ADF20001F3331 /* UIImage+Color.m */; };
 		300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300A08551036093B009C9A1C /* PlacemarkViewController.m */; };
 		53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D3762C161F3AEF00BE0895 /* CoreLocation.framework */; };
 		604E3C1C1BD824EE00D40362 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604E3C1A1BD824EE00D40362 /* LaunchScreen.storyboard */; };
@@ -38,6 +39,8 @@
 		2F14BFB41C7E6295002286BA /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+ZoomLevel.m"; path = "Categories/MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		2F14BFBA1C8070CD002286BA /* NearbyPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearbyPlaces.h; path = Model/NearbyPlaces.h; sourceTree = "<group>"; };
 		2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearbyPlaces.m; path = Model/NearbyPlaces.m; sourceTree = "<group>"; };
+		2F7E90BC1C9ADF20001F3331 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Color.h"; path = "Categories/UIImage+Color.h"; sourceTree = "<group>"; };
+		2F7E90BD1C9ADF20001F3331 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Color.m"; path = "Categories/UIImage+Color.m"; sourceTree = "<group>"; };
 		300A08541036093B009C9A1C /* PlacemarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacemarkViewController.h; sourceTree = "<group>"; };
 		300A08551036093B009C9A1C /* PlacemarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacemarkViewController.m; sourceTree = "<group>"; };
 		308ACE58106C19A60042E5C1 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 			children = (
 				2F14BFB31C7E6295002286BA /* MKMapView+ZoomLevel.h */,
 				2F14BFB41C7E6295002286BA /* MKMapView+ZoomLevel.m */,
+				2F7E90BC1C9ADF20001F3331 /* UIImage+Color.h */,
+				2F7E90BD1C9ADF20001F3331 /* UIImage+Color.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				LastUpgradeCheck = 0720;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = VN6H2JZ3DV;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -226,6 +232,7 @@
 			files = (
 				2F14BFB51C7E6295002286BA /* MKMapView+ZoomLevel.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */,
 				2F14BFBC1C8070CD002286BA /* NearbyPlaces.m in Sources */,
@@ -275,7 +282,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CurrentAddress_Prefix.pch;
 				INFOPLIST_FILE = "CurrentAddress-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRide;
 				PRODUCT_NAME = CurAddress;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -291,7 +298,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CurrentAddress_Prefix.pch;
 				INFOPLIST_FILE = "CurrentAddress-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRide;
 				PRODUCT_NAME = CurAddress;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
