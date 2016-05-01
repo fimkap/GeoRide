@@ -11,6 +11,8 @@
 #import "MKMapView+ZoomLevel.h"
 #import "NearbyPlaces.h"
 #import "UIImage+Color.h"
+#import "RideDataManager.h"
+#import <CloudKit/CloudKit.h>
 
 #define MAX_NUM_PLACES 4
 
@@ -24,6 +26,8 @@
 @property (nonatomic, strong) NearbyPlaces *nearbyPlaces;
 @property (nonatomic, strong) NSMutableDictionary *nearbyPlacesLocationMap;
 
+@property (nonatomic,strong) RideDataManager *rideDataManager;
+
 @end
 
 @implementation MapViewController
@@ -31,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	   
+
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
 
@@ -42,6 +46,9 @@
     
     self.nearbyPlaces = [[NearbyPlaces alloc] init];
     self.nearbyPlacesLocationMap = [[NSMutableDictionary alloc] init];
+
+    self.rideDataManager = [[RideDataManager alloc] init];
+    [self.rideDataManager initUserID];
 
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor greenColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     //[[UIBarButtonItem appearance] setTintColor:nil];
@@ -77,6 +84,7 @@
                                                     handler:^(UIAlertAction *action) {
                                                         MKPlacemark *pmark = [self.nearbyPlacesLocationMap objectForKey:action.title];
                                                         NSLog(@"Location of destination [%f][%f]", pmark.coordinate.latitude, pmark.coordinate.longitude);
+                                                        [self.rideDataManager storeLocation:pmark.coordinate];
                                                         }]];
         }
 
@@ -122,7 +130,8 @@
     }];
 }
 
-- (void)mapView:(__unused MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
+- (void)mapView:(__unused MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+{
 
     self.getAddressButton.enabled = NO;
     

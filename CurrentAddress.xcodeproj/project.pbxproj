@@ -15,6 +15,9 @@
 		28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MapViewController.m */; };
 		2F14BFB51C7E6295002286BA /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F14BFB41C7E6295002286BA /* MKMapView+ZoomLevel.m */; };
 		2F14BFBC1C8070CD002286BA /* NearbyPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */; };
+		2F5979761CD3D60F0062EFFD /* RideDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5979751CD3D60F0062EFFD /* RideDataManager.m */; };
+		2F5979781CD69AEE0062EFFD /* Announce.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2F5979771CD69AEE0062EFFD /* Announce.aiff */; };
+		2F627C141CCA39A20073F3E1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F627C131CCA39A20073F3E1 /* CloudKit.framework */; };
 		2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E90BD1C9ADF20001F3331 /* UIImage+Color.m */; };
 		300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300A08551036093B009C9A1C /* PlacemarkViewController.m */; };
 		53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D3762C161F3AEF00BE0895 /* CoreLocation.framework */; };
@@ -29,7 +32,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* CurAddress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurAddress.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Geo Ride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Geo Ride.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28D7ACF60DDB3853001CB0EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -39,6 +42,11 @@
 		2F14BFB41C7E6295002286BA /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+ZoomLevel.m"; path = "Categories/MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		2F14BFBA1C8070CD002286BA /* NearbyPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearbyPlaces.h; path = Model/NearbyPlaces.h; sourceTree = "<group>"; };
 		2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearbyPlaces.m; path = Model/NearbyPlaces.m; sourceTree = "<group>"; };
+		2F2499021CCA2A8B006059EA /* CurAddress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = CurAddress.entitlements; path = CurAddress/CurAddress.entitlements; sourceTree = "<group>"; };
+		2F5979741CD3D60F0062EFFD /* RideDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RideDataManager.h; path = Model/RideDataManager.h; sourceTree = "<group>"; };
+		2F5979751CD3D60F0062EFFD /* RideDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RideDataManager.m; path = Model/RideDataManager.m; sourceTree = "<group>"; };
+		2F5979771CD69AEE0062EFFD /* Announce.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Announce.aiff; sourceTree = "<group>"; };
+		2F627C131CCA39A20073F3E1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2F7E90BC1C9ADF20001F3331 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Color.h"; path = "Categories/UIImage+Color.h"; sourceTree = "<group>"; };
 		2F7E90BD1C9ADF20001F3331 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Color.m"; path = "Categories/UIImage+Color.m"; sourceTree = "<group>"; };
 		300A08541036093B009C9A1C /* PlacemarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacemarkViewController.h; sourceTree = "<group>"; };
@@ -62,6 +70,7 @@
 				53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				60CA950A1BFD4F8900E5EBDD /* MapKit.framework in Frameworks */,
+				2F627C141CCA39A20073F3E1 /* CloudKit.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 			);
@@ -89,7 +98,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* CurAddress.app */,
+				1D6058910D05DD3D006BFB54 /* Geo Ride.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +106,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				2F2499021CCA2A8B006059EA /* CurAddress.entitlements */,
 				308ACE58106C19A60042E5C1 /* ReadMe.md */,
 				2F14BFB91C8070B7002286BA /* Model */,
 				080E96DDFE201D6D7F000001 /* Sources */,
@@ -111,6 +121,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F5979771CD69AEE0062EFFD /* Announce.aiff */,
 				8D1107310486CEB800E47090 /* CurrentAddress-Info.plist */,
 				60909F591BD709E1008F5E04 /* Images.xcassets */,
 				60DC6A571BD6E89D0041C53E /* InfoPlist.strings */,
@@ -123,6 +134,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F627C131CCA39A20073F3E1 /* CloudKit.framework */,
 				60CA95091BFD4F8900E5EBDD /* MapKit.framework */,
 				53D3762C161F3AEF00BE0895 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -148,6 +160,8 @@
 			children = (
 				2F14BFBA1C8070CD002286BA /* NearbyPlaces.h */,
 				2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */,
+				2F5979741CD3D60F0062EFFD /* RideDataManager.h */,
+				2F5979751CD3D60F0062EFFD /* RideDataManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -169,7 +183,7 @@
 			);
 			name = CurAddress;
 			productName = CurrentAddress;
-			productReference = 1D6058910D05DD3D006BFB54 /* CurAddress.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Geo Ride.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -184,6 +198,12 @@
 						DevelopmentTeam = VN6H2JZ3DV;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -217,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60DC6A591BD6E89D0041C53E /* InfoPlist.strings in Resources */,
+				2F5979781CD69AEE0062EFFD /* Announce.aiff in Resources */,
 				60909F5A1BD709E1008F5E04 /* Images.xcassets in Resources */,
 				6078EA851BD82BD500CD1C1A /* MainStoryboard.storyboard in Resources */,
 				604E3C1C1BD824EE00D40362 /* LaunchScreen.storyboard in Resources */,
@@ -235,6 +256,7 @@
 				2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */,
+				2F5979761CD3D60F0062EFFD /* RideDataManager.m in Sources */,
 				2F14BFBC1C8070CD002286BA /* NearbyPlaces.m in Sources */,
 				300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */,
 			);
@@ -275,6 +297,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CurAddress/CurAddress.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -282,8 +305,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CurrentAddress_Prefix.pch;
 				INFOPLIST_FILE = "CurrentAddress-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRide;
-				PRODUCT_NAME = CurAddress;
+				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRider;
+				PRODUCT_NAME = "Geo Ride";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -293,13 +316,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CurAddress/CurAddress.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CurrentAddress_Prefix.pch;
 				INFOPLIST_FILE = "CurrentAddress-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRide;
-				PRODUCT_NAME = CurAddress;
+				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRider;
+				PRODUCT_NAME = "Geo Ride";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
