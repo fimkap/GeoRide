@@ -38,19 +38,36 @@
 
 - (void)storeLocation:(CLLocationCoordinate2D)destination
 {
-    //CKRecordID *greatID = [[CKRecordID alloc] initWithRecordName:@"GreatRoute"];
-    CKRecord *place = [[CKRecord alloc] initWithRecordType:@"Route" recordID:self.userRecID];
+    CKRecordID *greatID = [[CKRecordID alloc] initWithRecordName:@"GreatRoute"];
 
-    place[@"Name"] = @"Fima2";
-    place[@"Destination"] = [[CLLocation alloc] initWithLatitude:destination.latitude longitude:destination.longitude];
-    //place[@"Source"] = destination;
-
-    [self.publicDB saveRecord:place completionHandler:^(CKRecord *savedPlace, NSError *error) {
-        // handle errors here
+    [self.publicDB fetchRecordWithID:greatID completionHandler:^(CKRecord *fetchedRoute, NSError *error) {
         if (error)
-            NSLog(@"Error saving record %@", error.description);
-        else
-            NSLog(@"Saved record %@", savedPlace[@"Name"]);
+            NSLog(@"Error fetching record %@", error.description);
+        if (fetchedRoute) {
+            fetchedRoute[@"Destination"] = [[CLLocation alloc] initWithLatitude:destination.latitude longitude:destination.longitude];
+            [self.publicDB saveRecord:fetchedRoute completionHandler:^(CKRecord *savedPlace, NSError *savedError) {
+                if (savedError)
+                    NSLog(@"Error editing record %@", savedError.description);
+                else {
+                    NSLog(@"Edited record %@", savedPlace[@"Name"]);
+                    [self subscribeToNotificationOnRiders:destination];
+                }
+            }];
+        } else {
+            CKRecord *place = [[CKRecord alloc] initWithRecordType:@"Route" recordID:greatID];
+            place[@"Name"] = @"Fima2";
+            place[@"Destination"] = [[CLLocation alloc] initWithLatitude:destination.latitude longitude:destination.longitude];
+            //place[@"Source"] = destination;
+            [self.publicDB saveRecord:place completionHandler:^(CKRecord *savedPlace, NSError *savedError) {
+                // handle errors here
+                if (savedError)
+                    NSLog(@"Error saving record %@", savedError.description);
+                else {
+                    NSLog(@"Saved record %@", savedPlace[@"Name"]);
+                    [self subscribeToNotificationOnRiders:destination];
+                }
+            }];
+        }
     }];
 }
 
@@ -73,7 +90,7 @@
     [self.publicDB saveSubscription:subscription
                   completionHandler:^(CKSubscription *savedSubscription, NSError *error) {
                       if (error)
-                          NSLog(@"Error saving record %@", error.description);
+                          NSLog(@"Error in subscription %@", error.description);
                       else
                           NSLog(@"Saved subscription: ID [%@]", savedSubscription.subscriptionID);
              }];
