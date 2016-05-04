@@ -36,9 +36,10 @@
     }];
 }
 
-- (void)storeLocation:(CLLocationCoordinate2D)destination
+- (void)storeLocation:(CLLocationCoordinate2D)destination riderName:(NSString*)name
 {
-    CKRecordID *greatID = [[CKRecordID alloc] initWithRecordName:@"GreatRoute"];
+    NSString *recName = [NSString stringWithFormat:@"GreateRoute%@", self.userRecID];
+    CKRecordID *greatID = [[CKRecordID alloc] initWithRecordName:recName];
 
     [self.publicDB fetchRecordWithID:greatID completionHandler:^(CKRecord *fetchedRoute, NSError *error) {
         if (error)
@@ -55,7 +56,7 @@
             }];
         } else {
             CKRecord *place = [[CKRecord alloc] initWithRecordType:@"Route" recordID:greatID];
-            place[@"Name"] = @"Fima2";
+            place[@"Name"] = name;
             place[@"Destination"] = [[CLLocation alloc] initWithLatitude:destination.latitude longitude:destination.longitude];
             //place[@"Source"] = destination;
             [self.publicDB saveRecord:place completionHandler:^(CKRecord *savedPlace, NSError *savedError) {

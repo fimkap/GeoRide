@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSMutableDictionary *nearbyPlacesLocationMap;
 
 @property (nonatomic,strong) RideDataManager *rideDataManager;
+@property (nonatomic,copy) NSString *riderName;
 
 @end
 
@@ -52,6 +53,8 @@
 
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor greenColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     //[[UIBarButtonItem appearance] setTintColor:nil];
+
+    [self saveRiderName];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(__unused id)sender
@@ -84,7 +87,7 @@
                                                     handler:^(UIAlertAction *action) {
                                                         MKPlacemark *pmark = [self.nearbyPlacesLocationMap objectForKey:action.title];
                                                         NSLog(@"Location of destination [%f][%f]", pmark.coordinate.latitude, pmark.coordinate.longitude);
-                                                        [self.rideDataManager storeLocation:pmark.coordinate];
+                                                        [self.rideDataManager storeLocation:pmark.coordinate riderName:self.riderName];
                                                         }]];
         }
 
@@ -170,6 +173,29 @@
         // until we know the user granted this app location access
         self.mapView.showsUserLocation = YES;
     }
+}
+
+- (void)saveRiderName
+{
+    self.riderName = [[NSUserDefaults standardUserDefaults] objectForKey:@"RiderName"];
+    if (self.riderName)
+        return;
+
+    // Save to user defaults on the first run
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Rider Name" 
+                                                                   message:@"Enter your name" 
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+               style:UIAlertActionStyleDefault
+             handler:nil]];
+
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        self.riderName = textField.text;
+        [[NSUserDefaults standardUserDefaults] setObject:self.riderName forKey:@"RiderName"]; 
+        }];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

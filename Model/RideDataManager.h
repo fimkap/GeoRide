@@ -13,7 +13,7 @@
 @interface RideDataManager : NSObject
 
 - (void)initUserID;
-- (void)storeLocation:(CLLocationCoordinate2D)destination;
+- (void)storeLocation:(CLLocationCoordinate2D)destination riderName:(NSString*)name;
 - (void)subscribeToNotificationOnRiders:(CLLocationCoordinate2D)destination;
 
 @end
