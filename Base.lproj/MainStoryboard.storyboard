@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Current Address-->
@@ -37,6 +38,14 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Jey-d9-tdF"/>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iS5-TL-4ZN">
+                                <rect key="frame" x="240" y="360" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="UdM-yX-wb0"/>
+                                    <constraint firstAttribute="width" constant="60" id="qCJ-VD-3JU"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -44,6 +53,8 @@
                             <constraint firstItem="yRL-9Y-fB7" firstAttribute="bottom" secondItem="FxO-Ea-oEg" secondAttribute="bottom" id="56P-ZM-usF"/>
                             <constraint firstItem="PU5-Mv-fDN" firstAttribute="top" secondItem="FxO-Ea-oEg" secondAttribute="top" id="5jA-qg-Cyq"/>
                             <constraint firstItem="yRL-9Y-fB7" firstAttribute="leading" secondItem="FxO-Ea-oEg" secondAttribute="leading" id="6w5-k9-7EH"/>
+                            <constraint firstItem="yRL-9Y-fB7" firstAttribute="top" secondItem="iS5-TL-4ZN" secondAttribute="bottom" constant="16" id="CYf-gH-G8T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iS5-TL-4ZN" secondAttribute="trailing" constant="4" id="Rji-Dz-CNf"/>
                             <constraint firstItem="yRL-9Y-fB7" firstAttribute="top" secondItem="PU5-Mv-fDN" secondAttribute="bottom" id="eiQ-qn-1pH"/>
                             <constraint firstItem="PU5-Mv-fDN" firstAttribute="leading" secondItem="FxO-Ea-oEg" secondAttribute="leading" id="jZ7-b6-kuN"/>
                             <constraint firstItem="yRL-9Y-fB7" firstAttribute="trailing" secondItem="FxO-Ea-oEg" secondAttribute="trailing" id="lxp-Fa-Pj5"/>
@@ -54,6 +65,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="destBtn" destination="iS5-TL-4ZN" id="bU3-lw-E0k"/>
                         <outlet property="getAddressButton" destination="oLE-To-3IS" id="a5F-qL-eMx"/>
                         <outlet property="mapView" destination="PU5-Mv-fDN" id="zTV-6U-wf1"/>
                         <outlet property="view" destination="FxO-Ea-oEg" id="ZPL-VC-cQw"/>

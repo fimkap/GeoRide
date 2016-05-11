@@ -97,4 +97,18 @@
              }];
 }
 
+- (void)ridersToDestination:(CLLocationCoordinate2D)destination withCompletionHandler:(void(^)(NSArray*, NSError*))handler
+{
+    CLLocation *fixedLoc = [[CLLocation alloc] initWithLatitude:destination.latitude longitude:destination.longitude];
+    CGFloat radius = 5000; // meters
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"distanceToLocation:fromLocation:(Destination, %@) < %f", fixedLoc, radius];
+
+    CKQuery *query = [[CKQuery alloc] initWithRecordType:@"Route" predicate:predicate];
+    [self.publicDB performQuery:query 
+                   inZoneWithID:nil 
+              completionHandler:^(NSArray *results, NSError *error){
+                  handler(results, error);
+              }];
+}
+
 @end

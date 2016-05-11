@@ -28,6 +28,7 @@
 
 @property (nonatomic,strong) RideDataManager *rideDataManager;
 @property (nonatomic,copy) NSString *riderName;
+@property (weak, nonatomic) IBOutlet UIButton *destBtn;
 
 @end
 
@@ -53,6 +54,11 @@
 
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor greenColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     //[[UIBarButtonItem appearance] setTintColor:nil];
+
+    self.destBtn.layer.cornerRadius = self.destBtn.frame.size.height / 2;
+    self.destBtn.layer.masksToBounds = YES;
+    self.destBtn.layer.borderWidth = 3;
+    self.destBtn.layer.borderColor = [UIColor orangeColor].CGColor;
 
     [self saveRiderName];
 }
