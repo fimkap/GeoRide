@@ -19,6 +19,7 @@
 		2F5979781CD69AEE0062EFFD /* Announce.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2F5979771CD69AEE0062EFFD /* Announce.aiff */; };
 		2F627C141CCA39A20073F3E1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F627C131CCA39A20073F3E1 /* CloudKit.framework */; };
 		2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E90BD1C9ADF20001F3331 /* UIImage+Color.m */; };
+		2FB766041CE4FB4E0045515F /* RidersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB766031CE4FB4E0045515F /* RidersTableViewController.m */; };
 		300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 300A08551036093B009C9A1C /* PlacemarkViewController.m */; };
 		53D3762D161F3AEF00BE0895 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D3762C161F3AEF00BE0895 /* CoreLocation.framework */; };
 		604E3C1C1BD824EE00D40362 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 604E3C1A1BD824EE00D40362 /* LaunchScreen.storyboard */; };
@@ -49,6 +50,8 @@
 		2F627C131CCA39A20073F3E1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2F7E90BC1C9ADF20001F3331 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Color.h"; path = "Categories/UIImage+Color.h"; sourceTree = "<group>"; };
 		2F7E90BD1C9ADF20001F3331 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Color.m"; path = "Categories/UIImage+Color.m"; sourceTree = "<group>"; };
+		2FB766021CE4FB4E0045515F /* RidersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RidersTableViewController.h; path = Views/RidersTableViewController.h; sourceTree = "<group>"; };
+		2FB766031CE4FB4E0045515F /* RidersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RidersTableViewController.m; path = Views/RidersTableViewController.m; sourceTree = "<group>"; };
 		300A08541036093B009C9A1C /* PlacemarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacemarkViewController.h; sourceTree = "<group>"; };
 		300A08551036093B009C9A1C /* PlacemarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacemarkViewController.m; sourceTree = "<group>"; };
 		308ACE58106C19A60042E5C1 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 				308ACE58106C19A60042E5C1 /* ReadMe.md */,
 				2F14BFB91C8070B7002286BA /* Model */,
 				080E96DDFE201D6D7F000001 /* Sources */,
+				2FB766011CE4FAC60045515F /* Views */,
 				2F14BFB21C7E5F68002286BA /* Categories */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -164,6 +168,15 @@
 				2F5979751CD3D60F0062EFFD /* RideDataManager.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		2FB766011CE4FAC60045515F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2FB766021CE4FB4E0045515F /* RidersTableViewController.h */,
+				2FB766031CE4FB4E0045515F /* RidersTableViewController.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +269,7 @@
 				2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */,
+				2FB766041CE4FB4E0045515F /* RidersTableViewController.m in Sources */,
 				2F5979761CD3D60F0062EFFD /* RideDataManager.m in Sources */,
 				2F14BFBC1C8070CD002286BA /* NearbyPlaces.m in Sources */,
 				300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */,

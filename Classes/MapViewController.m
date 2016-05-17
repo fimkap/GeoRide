@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "PlacemarkViewController.h"
+#import "RidersTableViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "NearbyPlaces.h"
 #import "UIImage+Color.h"
@@ -29,6 +30,8 @@
 @property (nonatomic,strong) RideDataManager *rideDataManager;
 @property (nonatomic,copy) NSString *riderName;
 @property (weak, nonatomic) IBOutlet UIButton *destBtn;
+@property (weak, nonatomic) IBOutlet UIButton *ridersBtn;
+@property (nonatomic,strong) NSMutableArray *riders;
 
 @end
 
@@ -55,6 +58,13 @@
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor greenColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     //[[UIBarButtonItem appearance] setTintColor:nil];
 
+    self.riders = [[NSMutableArray alloc] init];
+
+    self.ridersBtn.layer.cornerRadius = self.destBtn.frame.size.height / 2;
+    self.ridersBtn.layer.masksToBounds = YES;
+    self.ridersBtn.layer.borderWidth = 3;
+    self.ridersBtn.layer.borderColor = [UIColor blueColor].CGColor;
+
     self.destBtn.layer.cornerRadius = self.destBtn.frame.size.height / 2;
     self.destBtn.layer.masksToBounds = YES;
     self.destBtn.layer.borderWidth = 3;
@@ -70,6 +80,11 @@
 		// Get the destination view controller and set the placemark data that it should display.
         PlacemarkViewController *viewController = segue.destinationViewController;
         viewController.placemark = self.placemark;
+    }
+    else if ([segue.identifier isEqualToString:@"pushToRiders"])
+    {
+        RidersTableViewController *viewController = segue.destinationViewController;
+        viewController.riders = self.riders;
     }
 }
 
@@ -94,7 +109,18 @@
                                                         MKPlacemark *pmark = [self.nearbyPlacesLocationMap objectForKey:action.title];
                                                         NSLog(@"Location of destination [%f][%f]", pmark.coordinate.latitude, pmark.coordinate.longitude);
                                                         [self.rideDataManager storeLocation:pmark.coordinate riderName:self.riderName];
-                                                        }]];
+                                                        // Get the list of riders
+                                                        [self.rideDataManager ridersToDestination:pmark.coordinate 
+                                                                            withCompletionHandler:^(NSArray *results, NSError *ridersError){
+                                                                                if (!ridersError) {
+                                                                                    [self.riders setArray:results];
+                                                                                    NSString *ridersCount = [NSString stringWithFormat:@"%lu", (unsigned long)self.riders.count];
+                                                                                    [self.ridersBtn setTitle:ridersCount forState:UIControlStateNormal];
+                                                                                }
+                                                                                else
+                                                                                    NSLog(@"Error getting riders %@", ridersError.description);
+                                                                                }];
+                                                    }]];
         }
 
         [alert addAction:[UIAlertAction actionWithTitle:@"Other Destination"
@@ -111,6 +137,10 @@
         [self presentViewController:alert animated:YES completion:nil];
     }];
 
+}
+
+- (IBAction)ridersToDestination:(id)sender {
+    [self performSegueWithIdentifier:@"pushToRiders" sender:sender];
 }
 
 - (void)mapView:(__unused MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
