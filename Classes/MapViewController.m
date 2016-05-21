@@ -70,6 +70,11 @@
     self.destBtn.layer.borderWidth = 3;
     self.destBtn.layer.borderColor = [UIColor orangeColor].CGColor;
 
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(handleNewRidersNotification) 
+                                                 name:@"NewRidersNotification" 
+                                               object:nil];
+
     [self saveRiderName];
 }
 
@@ -109,17 +114,8 @@
                                                         MKPlacemark *pmark = [self.nearbyPlacesLocationMap objectForKey:action.title];
                                                         NSLog(@"Location of destination [%f][%f]", pmark.coordinate.latitude, pmark.coordinate.longitude);
                                                         [self.rideDataManager storeLocation:pmark.coordinate riderName:self.riderName];
-                                                        // Get the list of riders
-                                                        [self.rideDataManager ridersToDestination:pmark.coordinate 
-                                                                            withCompletionHandler:^(NSArray *results, NSError *ridersError){
-                                                                                if (!ridersError) {
-                                                                                    [self.riders setArray:results];
-                                                                                    NSString *ridersCount = [NSString stringWithFormat:@"%lu", (unsigned long)self.riders.count];
-                                                                                    [self.ridersBtn setTitle:ridersCount forState:UIControlStateNormal];
-                                                                                }
-                                                                                else
-                                                                                    NSLog(@"Error getting riders %@", ridersError.description);
-                                                                                }];
+
+                                                        [self availableRiders:pmark.coordinate];
                                                     }]];
         }
 
@@ -224,14 +220,40 @@
 
     [alert addAction:[UIAlertAction actionWithTitle:@"OK"
                style:UIAlertActionStyleDefault
-             handler:nil]];
+             handler:^(UIAlertAction* action) {
+                 self.riderName = alert.textFields[0].text;
+                 [[NSUserDefaults standardUserDefaults] setObject:self.riderName forKey:@"RiderName"]; 
+                 NSLog(@"Rider name: [%@]", self.riderName);
+             }]];
 
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        self.riderName = textField.text;
-        [[NSUserDefaults standardUserDefaults] setObject:self.riderName forKey:@"RiderName"]; 
+        textField.placeholder = @"<Your name here>";
         }];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)handleNewRidersNotification
+{
+    [self availableRiders:[self.rideDataManager userDestination]];
+}
+
+- (void)availableRiders:(CLLocationCoordinate2D)coordinate
+{
+    // Get the list of riders
+    [self.rideDataManager ridersToDestination:coordinate 
+                        withCompletionHandler:^(NSArray *results, NSError *error) {
+                            if (!error) {
+                                [self.riders setArray:results];
+                                __block unsigned long count = (unsigned long)self.riders.count;
+                                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                                    NSString *ridersCount = [NSString stringWithFormat:@"%lu", count];
+                                    [self.ridersBtn setTitle:ridersCount forState:UIControlStateNormal];
+                                });
+                            }
+                            else
+                                NSLog(@"Error getting riders %@", error.description);
+                        }];
 }
 
 @end
