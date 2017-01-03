@@ -38,7 +38,10 @@
 
 - (void)storeLocation:(CLLocationCoordinate2D)destination riderName:(NSString*)name
 {
-    NSString *recName = [NSString stringWithFormat:@"GreateRoute%@", self.userRecID];
+    [self setUserDestination:destination]; // Save locally
+
+    NSString *recName = [NSString stringWithFormat:@"GreatRoute%@", self.userRecID.recordName];
+    //NSString *recName = [NSString stringWithFormat:@"GreatRoute_%@", name];
     CKRecordID *greatID = [[CKRecordID alloc] initWithRecordName:recName];
 
     [self.publicDB fetchRecordWithID:greatID completionHandler:^(CKRecord *fetchedRoute, NSError *error) {
@@ -56,7 +59,7 @@
             }];
         } else {
             CKRecord *place = [[CKRecord alloc] initWithRecordType:@"Route" recordID:greatID];
-            place[@"Name"] = name;
+            place[@"Name"] = [[NSString alloc] initWithString:name];
             place[@"Destination"] = [[CLLocation alloc] initWithLatitude:destination.latitude longitude:destination.longitude];
             //place[@"Source"] = destination;
             [self.publicDB saveRecord:place completionHandler:^(CKRecord *savedPlace, NSError *savedError) {
@@ -95,6 +98,20 @@
                       else
                           NSLog(@"Saved subscription: ID [%@]", savedSubscription.subscriptionID);
              }];
+}
+
+- (void)ridersToDestination:(CLLocationCoordinate2D)destination withCompletionHandler:(void(^)(NSArray*, NSError*))handler
+{
+    CLLocation *fixedLoc = [[CLLocation alloc] initWithLatitude:destination.latitude longitude:destination.longitude];
+    CGFloat radius = 5000; // meters
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"distanceToLocation:fromLocation:(Destination, %@) < %f", fixedLoc, radius];
+
+    CKQuery *query = [[CKQuery alloc] initWithRecordType:@"Route" predicate:predicate];
+    [self.publicDB performQuery:query 
+                   inZoneWithID:nil 
+              completionHandler:^(NSArray *results, NSError *error){
+                  handler(results, error);
+              }];
 }
 
 @end

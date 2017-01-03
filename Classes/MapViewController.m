@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "PlacemarkViewController.h"
+#import "RidersTableViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "NearbyPlaces.h"
 #import "UIImage+Color.h"
@@ -28,6 +29,9 @@
 
 @property (nonatomic,strong) RideDataManager *rideDataManager;
 @property (nonatomic,copy) NSString *riderName;
+@property (weak, nonatomic) IBOutlet UIButton *destBtn;
+@property (weak, nonatomic) IBOutlet UIButton *ridersBtn;
+@property (nonatomic,strong) NSMutableArray *riders;
 
 @end
 
@@ -54,6 +58,23 @@
     [[UIToolbar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor greenColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     //[[UIBarButtonItem appearance] setTintColor:nil];
 
+    self.riders = [[NSMutableArray alloc] init];
+
+    self.ridersBtn.layer.cornerRadius = self.destBtn.frame.size.height / 2;
+    self.ridersBtn.layer.masksToBounds = YES;
+    self.ridersBtn.layer.borderWidth = 3;
+    self.ridersBtn.layer.borderColor = [UIColor blueColor].CGColor;
+
+    self.destBtn.layer.cornerRadius = self.destBtn.frame.size.height / 2;
+    self.destBtn.layer.masksToBounds = YES;
+    self.destBtn.layer.borderWidth = 3;
+    self.destBtn.layer.borderColor = [UIColor orangeColor].CGColor;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(handleNewRidersNotification) 
+                                                 name:@"NewRidersNotification" 
+                                               object:nil];
+
     [self saveRiderName];
 }
 
@@ -64,6 +85,11 @@
 		// Get the destination view controller and set the placemark data that it should display.
         PlacemarkViewController *viewController = segue.destinationViewController;
         viewController.placemark = self.placemark;
+    }
+    else if ([segue.identifier isEqualToString:@"pushToRiders"])
+    {
+        RidersTableViewController *viewController = segue.destinationViewController;
+        viewController.riders = self.riders;
     }
 }
 
@@ -88,7 +114,9 @@
                                                         MKPlacemark *pmark = [self.nearbyPlacesLocationMap objectForKey:action.title];
                                                         NSLog(@"Location of destination [%f][%f]", pmark.coordinate.latitude, pmark.coordinate.longitude);
                                                         [self.rideDataManager storeLocation:pmark.coordinate riderName:self.riderName];
-                                                        }]];
+
+                                                        [self availableRiders:pmark.coordinate];
+                                                    }]];
         }
 
         [alert addAction:[UIAlertAction actionWithTitle:@"Other Destination"
@@ -105,6 +133,10 @@
         [self presentViewController:alert animated:YES completion:nil];
     }];
 
+}
+
+- (IBAction)ridersToDestination:(id)sender {
+    [self performSegueWithIdentifier:@"pushToRiders" sender:sender];
 }
 
 - (void)mapView:(__unused MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -188,14 +220,40 @@
 
     [alert addAction:[UIAlertAction actionWithTitle:@"OK"
                style:UIAlertActionStyleDefault
-             handler:nil]];
+             handler:^(UIAlertAction* action) {
+                 self.riderName = alert.textFields[0].text;
+                 [[NSUserDefaults standardUserDefaults] setObject:self.riderName forKey:@"RiderName"]; 
+                 NSLog(@"Rider name: [%@]", self.riderName);
+             }]];
 
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        self.riderName = textField.text;
-        [[NSUserDefaults standardUserDefaults] setObject:self.riderName forKey:@"RiderName"]; 
+        textField.placeholder = @"<Your name here>";
         }];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)handleNewRidersNotification
+{
+    [self availableRiders:[self.rideDataManager userDestination]];
+}
+
+- (void)availableRiders:(CLLocationCoordinate2D)coordinate
+{
+    // Get the list of riders
+    [self.rideDataManager ridersToDestination:coordinate 
+                        withCompletionHandler:^(NSArray *results, NSError *error) {
+                            if (!error) {
+                                [self.riders setArray:results];
+                                __block unsigned long count = (unsigned long)self.riders.count;
+                                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                                    NSString *ridersCount = [NSString stringWithFormat:@"%lu", count];
+                                    [self.ridersBtn setTitle:ridersCount forState:UIControlStateNormal];
+                                });
+                            }
+                            else
+                                NSLog(@"Error getting riders %@", error.description);
+                        }];
 }
 
 @end

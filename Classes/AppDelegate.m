@@ -30,7 +30,8 @@
         CKQueryNotification *queryNotification = (CKQueryNotification*)ckNotification;
         CKRecordID *recordID = [queryNotification recordID];
         NSLog(@"Push: %@", recordID.recordName);
-        // ...
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NewRidersNotification" object:nil];
     }
 }
 

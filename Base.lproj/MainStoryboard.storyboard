@@ -3,9 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Current Address-->
+        <!--Your Destination-->
         <scene sceneID="BFV-zF-JH7">
             <objects>
                 <viewController id="yUM-ey-dUk" customClass="MapViewController" sceneMemberID="viewController">
@@ -23,45 +24,77 @@
                                     <outlet property="delegate" destination="yUM-ey-dUk" id="cT7-Ia-OCC"/>
                                 </connections>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRL-9Y-fB7">
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRL-9Y-fB7">
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VLf-lv-sTv"/>
                                     <barButtonItem enabled="NO" title="Enter your destination" style="plain" id="oLE-To-3IS">
                                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="selectDestination:" destination="yUM-ey-dUk" id="S5g-ha-JH6"/>
-                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Jey-d9-tdF"/>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iS5-TL-4ZN">
+                                <rect key="frame" x="240" y="360" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="UdM-yX-wb0"/>
+                                    <constraint firstAttribute="width" constant="60" id="qCJ-VD-3JU"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="selectDestination:" destination="yUM-ey-dUk" eventType="touchUpInside" id="men-Dl-viw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eU5-ET-SAl" userLabel="Riders Btn">
+                                <rect key="frame" x="240" y="282" width="60" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="cwL-qH-VY3"/>
+                                    <constraint firstAttribute="width" constant="60" id="hBK-6S-sqf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ridersToDestination:" destination="yUM-ey-dUk" eventType="touchUpInside" id="BiT-Bw-rbh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PU5-Mv-fDN" firstAttribute="trailing" secondItem="FxO-Ea-oEg" secondAttribute="trailing" id="23n-Ca-3z0"/>
                             <constraint firstItem="yRL-9Y-fB7" firstAttribute="bottom" secondItem="FxO-Ea-oEg" secondAttribute="bottom" id="56P-ZM-usF"/>
                             <constraint firstItem="PU5-Mv-fDN" firstAttribute="top" secondItem="FxO-Ea-oEg" secondAttribute="top" id="5jA-qg-Cyq"/>
+                            <constraint firstItem="l4X-ac-RDB" firstAttribute="top" secondItem="PU5-Mv-fDN" secondAttribute="bottom" id="6Xe-KE-DSL"/>
                             <constraint firstItem="yRL-9Y-fB7" firstAttribute="leading" secondItem="FxO-Ea-oEg" secondAttribute="leading" id="6w5-k9-7EH"/>
-                            <constraint firstItem="yRL-9Y-fB7" firstAttribute="top" secondItem="PU5-Mv-fDN" secondAttribute="bottom" id="eiQ-qn-1pH"/>
+                            <constraint firstItem="yRL-9Y-fB7" firstAttribute="top" secondItem="iS5-TL-4ZN" secondAttribute="bottom" constant="16" id="CYf-gH-G8T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iS5-TL-4ZN" secondAttribute="trailing" constant="4" id="Rji-Dz-CNf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eU5-ET-SAl" secondAttribute="trailing" constant="4" id="Xgl-R0-4JX"/>
+                            <constraint firstItem="iS5-TL-4ZN" firstAttribute="top" secondItem="eU5-ET-SAl" secondAttribute="bottom" constant="18" id="iFk-nV-PaG"/>
                             <constraint firstItem="PU5-Mv-fDN" firstAttribute="leading" secondItem="FxO-Ea-oEg" secondAttribute="leading" id="jZ7-b6-kuN"/>
                             <constraint firstItem="yRL-9Y-fB7" firstAttribute="trailing" secondItem="FxO-Ea-oEg" secondAttribute="trailing" id="lxp-Fa-Pj5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Current Address" id="Dpr-5A-dI2">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Your Destination" id="Dpr-5A-dI2">
                         <barButtonItem key="backBarButtonItem" title="Back" id="kNN-RW-7kb"/>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="destBtn" destination="iS5-TL-4ZN" id="bU3-lw-E0k"/>
                         <outlet property="getAddressButton" destination="oLE-To-3IS" id="a5F-qL-eMx"/>
                         <outlet property="mapView" destination="PU5-Mv-fDN" id="zTV-6U-wf1"/>
+                        <outlet property="ridersBtn" destination="eU5-ET-SAl" id="iBH-lP-aBE"/>
                         <outlet property="view" destination="FxO-Ea-oEg" id="ZPL-VC-cQw"/>
+                        <segue destination="9ew-5G-wYL" kind="push" identifier="pushToRiders" id="iWN-8W-V1J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQF-2l-jzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922.5" y="28.521126760563376"/>
+            <point key="canvasLocation" x="874" y="28"/>
         </scene>
         <!--Address-->
         <scene sceneID="TkK-2A-sjc">
@@ -282,6 +315,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jj1-Cj-Oxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1696.875" y="28.521126760563376"/>
+        </scene>
+        <!--Riders Table View Controller-->
+        <scene sceneID="Kq9-hI-7sL">
+            <objects>
+                <tableViewController id="9ew-5G-wYL" customClass="RidersTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4bR-gc-Pav">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Rider" id="cPf-rG-J29">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cPf-rG-J29" id="anL-C4-hJ1">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9ew-5G-wYL" id="Lck-qG-S8P"/>
+                            <outlet property="delegate" destination="9ew-5G-wYL" id="ZLy-iF-vfa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="k9J-T0-IQl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0dT-Ok-iIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1495" y="655"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cX4-54-btR">

@@ -5,6 +5,9 @@
 -F/Users/fimkap/Library/Developer/Xcode/DerivedData/CurrentAddress-bbuqpqzwjlkmxggzltbbqvdbjenv/Build/Products/Debug-iphonesimulator
 -I./Categories
 -I./Model
+-I./Views
 -Weverything
 -Wno-objc-missing-property-synthesis
 -Wno-nullable-to-nonnull-conversion
+-Wno-sign-conversion
+-Wno-unused-parameter

@@ -11,5 +11,7 @@
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
+- (IBAction)selectDestination:(id)sender;
+
 @end
 

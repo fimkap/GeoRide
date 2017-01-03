@@ -12,8 +12,11 @@
 
 @interface RideDataManager : NSObject
 
+@property (nonatomic,assign) CLLocationCoordinate2D userDestination;
+
 - (void)initUserID;
 - (void)storeLocation:(CLLocationCoordinate2D)destination riderName:(NSString*)name;
 - (void)subscribeToNotificationOnRiders:(CLLocationCoordinate2D)destination;
+- (void)ridersToDestination:(CLLocationCoordinate2D)destination withCompletionHandler:(void(^)(NSArray*, NSError*))handler;
 
 @end
