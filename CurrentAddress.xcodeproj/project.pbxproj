@@ -15,6 +15,11 @@
 		28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MapViewController.m */; };
 		2F14BFB51C7E6295002286BA /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F14BFB41C7E6295002286BA /* MKMapView+ZoomLevel.m */; };
 		2F14BFBC1C8070CD002286BA /* NearbyPlaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */; };
+		2F4CD9681E79B3630025D383 /* ProfilePictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CD9671E79B3630025D383 /* ProfilePictureCell.swift */; };
+		2F4CD96A1E79F3540025D383 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CD9691E79F3540025D383 /* User.swift */; };
+		2F4CD96F1E7AC05C0025D383 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CD96E1E7AC05C0025D383 /* ProfileTableViewController.swift */; };
+		2F4CD9711E7AF79B0025D383 /* ProfileTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CD9701E7AF79B0025D383 /* ProfileTextCell.swift */; };
+		2F4CD9731E7B04740025D383 /* TestUser.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2F4CD9721E7B04740025D383 /* TestUser.jpg */; };
 		2F5979761CD3D60F0062EFFD /* RideDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5979751CD3D60F0062EFFD /* RideDataManager.m */; };
 		2F5979781CD69AEE0062EFFD /* Announce.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2F5979771CD69AEE0062EFFD /* Announce.aiff */; };
 		2F627C141CCA39A20073F3E1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F627C131CCA39A20073F3E1 /* CloudKit.framework */; };
@@ -44,6 +49,12 @@
 		2F14BFBA1C8070CD002286BA /* NearbyPlaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearbyPlaces.h; path = Model/NearbyPlaces.h; sourceTree = "<group>"; };
 		2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearbyPlaces.m; path = Model/NearbyPlaces.m; sourceTree = "<group>"; };
 		2F2499021CCA2A8B006059EA /* CurAddress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = CurAddress.entitlements; path = CurAddress/CurAddress.entitlements; sourceTree = "<group>"; };
+		2F4CD9661E79B3630025D383 /* CurAddress-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CurAddress-Bridging-Header.h"; sourceTree = "<group>"; };
+		2F4CD9671E79B3630025D383 /* ProfilePictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePictureCell.swift; path = Views/ProfilePictureCell.swift; sourceTree = "<group>"; };
+		2F4CD9691E79F3540025D383 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		2F4CD96E1E7AC05C0025D383 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		2F4CD9701E7AF79B0025D383 /* ProfileTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTextCell.swift; path = Views/ProfileTextCell.swift; sourceTree = "<group>"; };
+		2F4CD9721E7B04740025D383 /* TestUser.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestUser.jpg; sourceTree = "<group>"; };
 		2F5979741CD3D60F0062EFFD /* RideDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RideDataManager.h; path = Model/RideDataManager.h; sourceTree = "<group>"; };
 		2F5979751CD3D60F0062EFFD /* RideDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RideDataManager.m; path = Model/RideDataManager.m; sourceTree = "<group>"; };
 		2F5979771CD69AEE0062EFFD /* Announce.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Announce.aiff; sourceTree = "<group>"; };
@@ -111,6 +122,7 @@
 			children = (
 				2F2499021CCA2A8B006059EA /* CurAddress.entitlements */,
 				308ACE58106C19A60042E5C1 /* ReadMe.md */,
+				2F4CD96B1E7ABBEA0025D383 /* Controller */,
 				2F14BFB91C8070B7002286BA /* Model */,
 				080E96DDFE201D6D7F000001 /* Sources */,
 				2FB766011CE4FAC60045515F /* Views */,
@@ -125,6 +137,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F4CD9721E7B04740025D383 /* TestUser.jpg */,
 				2F5979771CD69AEE0062EFFD /* Announce.aiff */,
 				8D1107310486CEB800E47090 /* CurrentAddress-Info.plist */,
 				60909F591BD709E1008F5E04 /* Images.xcassets */,
@@ -166,8 +179,17 @@
 				2F14BFBB1C8070CD002286BA /* NearbyPlaces.m */,
 				2F5979741CD3D60F0062EFFD /* RideDataManager.h */,
 				2F5979751CD3D60F0062EFFD /* RideDataManager.m */,
+				2F4CD9691E79F3540025D383 /* User.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		2F4CD96B1E7ABBEA0025D383 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F4CD96E1E7AC05C0025D383 /* ProfileTableViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		2FB766011CE4FAC60045515F /* Views */ = {
@@ -175,6 +197,9 @@
 			children = (
 				2FB766021CE4FB4E0045515F /* RidersTableViewController.h */,
 				2FB766031CE4FB4E0045515F /* RidersTableViewController.m */,
+				2F4CD9671E79B3630025D383 /* ProfilePictureCell.swift */,
+				2F4CD9661E79B3630025D383 /* CurAddress-Bridging-Header.h */,
+				2F4CD9701E7AF79B0025D383 /* ProfileTextCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -209,6 +234,7 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = VN6H2JZ3DV;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -250,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60DC6A591BD6E89D0041C53E /* InfoPlist.strings in Resources */,
+				2F4CD9731E7B04740025D383 /* TestUser.jpg in Resources */,
 				2F5979781CD69AEE0062EFFD /* Announce.aiff in Resources */,
 				60909F5A1BD709E1008F5E04 /* Images.xcassets in Resources */,
 				6078EA851BD82BD500CD1C1A /* MainStoryboard.storyboard in Resources */,
@@ -264,15 +291,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F4CD9681E79B3630025D383 /* ProfilePictureCell.swift in Sources */,
 				2F14BFB51C7E6295002286BA /* MKMapView+ZoomLevel.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */,
+				2F4CD9711E7AF79B0025D383 /* ProfileTextCell.swift in Sources */,
 				2FB766041CE4FB4E0045515F /* RidersTableViewController.m in Sources */,
+				2F4CD96F1E7AC05C0025D383 /* ProfileTableViewController.swift in Sources */,
 				2F5979761CD3D60F0062EFFD /* RideDataManager.m in Sources */,
 				2F14BFBC1C8070CD002286BA /* NearbyPlaces.m in Sources */,
 				300A08571036093B009C9A1C /* PlacemarkViewController.m in Sources */,
+				2F4CD96A1E79F3540025D383 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +342,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CurAddress/CurAddress.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -319,8 +351,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CurrentAddress_Prefix.pch;
 				INFOPLIST_FILE = "CurrentAddress-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRider;
 				PRODUCT_NAME = "Geo Ride";
+				SWIFT_OBJC_BRIDGING_HEADER = "CurAddress-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -330,14 +366,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CurAddress/CurAddress.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CurrentAddress_Prefix.pch;
 				INFOPLIST_FILE = "CurrentAddress-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.efim.GeoRider;
 				PRODUCT_NAME = "Geo Ride";
+				SWIFT_OBJC_BRIDGING_HEADER = "CurAddress-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
