@@ -15,11 +15,12 @@ class ProfilePictureCell : UITableViewCell {
 
   static let reuseIdentifier = "\(ProfilePictureCell.self)"
 
-  private var picture = UIImageView()
+  // private var picture = UIImageView()
+  @IBOutlet weak var pic: UIImageView!
 
   var user: User! {
     didSet {
-      picture.image = user.image
+      pic.image = user.image
     }
   }
 
@@ -35,12 +36,12 @@ class ProfilePictureCell : UITableViewCell {
     // Configure the view for the selected state
   }
 
-  override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
+  // override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+  //   super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-  }
+  // }
 
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("\(#function) has not been implemented")
-  }
+  // required init?(coder aDecoder: NSCoder) {
+  //   fatalError("\(#function) has not been implemented")
+  // }
 }

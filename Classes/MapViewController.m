@@ -14,6 +14,7 @@
 #import "UIImage+Color.h"
 #import "RideDataManager.h"
 #import <CloudKit/CloudKit.h>
+#import "Geo_Ride-Swift.h"
 
 #define MAX_NUM_PLACES 4
 
@@ -32,6 +33,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *destBtn;
 @property (weak, nonatomic) IBOutlet UIButton *ridersBtn;
 @property (nonatomic,strong) NSMutableArray *riders;
+
+@property (nonatomic,strong) MapInteractor *interactor;
+
+@property (nonatomic, strong) NSMutableDictionary *phoneByCity;
 
 @end
 
@@ -75,7 +80,15 @@
                                                  name:@"NewRidersNotification" 
                                                object:nil];
 
+    self.interactor = [[MapInteractor alloc] init];
+    /*
+    [self.interactor saveRiderName:^(NSString *nick) {
+        NSLog(@"%@", nick);
+    }];
+    */
     [self saveRiderName];
+    self.phoneByCity = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"952471000",@"Fuengirola",
+                        @"952441545", @"Benalmadena", nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(__unused id)sender
@@ -155,6 +168,7 @@
 		if ((placemarks != nil) && (placemarks.count > 0)) {
 			// If the placemark is not nil then we have at least one placemark. Typically there will only be one.
 			self.placemark = placemarks[0];
+      MapInteractor.placemark = self.placemark;
 			
 			// we have received our current location, so enable the "Get Current Address" button
             self.getAddressButton.enabled = YES;
@@ -205,6 +219,25 @@
         // until we know the user granted this app location access
         self.mapView.showsUserLocation = YES;
     }
+}
+
+- (void)presentAlertWithStyle:(NSInteger)style actionStyle:(NSInteger)actionStyle title:(NSString*)title message:(NSString*)message completion:(void(^)(NSString*))completion
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:style];
+
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+               style:actionStyle
+             handler:^(UIAlertAction* action) {
+                 completion(alert.textFields[0].text);
+             }]];
+
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"<Your name here>";
+        }];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)saveRiderName

@@ -20,6 +20,9 @@
 		2F4CD96F1E7AC05C0025D383 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CD96E1E7AC05C0025D383 /* ProfileTableViewController.swift */; };
 		2F4CD9711E7AF79B0025D383 /* ProfileTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CD9701E7AF79B0025D383 /* ProfileTextCell.swift */; };
 		2F4CD9731E7B04740025D383 /* TestUser.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2F4CD9721E7B04740025D383 /* TestUser.jpg */; };
+		2F4CD9771E7D57360025D383 /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CD9761E7D57360025D383 /* MapInteractor.swift */; };
+		2F4CD9791E8570870025D383 /* Taxi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2F4CD9781E8570870025D383 /* Taxi.jpg */; };
+		2F5432C31E85B48100463F70 /* TaxiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5432C21E85B48100463F70 /* TaxiViewController.swift */; };
 		2F5979761CD3D60F0062EFFD /* RideDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5979751CD3D60F0062EFFD /* RideDataManager.m */; };
 		2F5979781CD69AEE0062EFFD /* Announce.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2F5979771CD69AEE0062EFFD /* Announce.aiff */; };
 		2F627C141CCA39A20073F3E1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F627C131CCA39A20073F3E1 /* CloudKit.framework */; };
@@ -55,6 +58,9 @@
 		2F4CD96E1E7AC05C0025D383 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		2F4CD9701E7AF79B0025D383 /* ProfileTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTextCell.swift; path = Views/ProfileTextCell.swift; sourceTree = "<group>"; };
 		2F4CD9721E7B04740025D383 /* TestUser.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestUser.jpg; sourceTree = "<group>"; };
+		2F4CD9761E7D57360025D383 /* MapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapInteractor.swift; path = Interactor/MapInteractor.swift; sourceTree = "<group>"; };
+		2F4CD9781E8570870025D383 /* Taxi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Taxi.jpg; sourceTree = "<group>"; };
+		2F5432C21E85B48100463F70 /* TaxiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaxiViewController.swift; path = Views/TaxiViewController.swift; sourceTree = "<group>"; };
 		2F5979741CD3D60F0062EFFD /* RideDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RideDataManager.h; path = Model/RideDataManager.h; sourceTree = "<group>"; };
 		2F5979751CD3D60F0062EFFD /* RideDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RideDataManager.m; path = Model/RideDataManager.m; sourceTree = "<group>"; };
 		2F5979771CD69AEE0062EFFD /* Announce.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Announce.aiff; sourceTree = "<group>"; };
@@ -120,6 +126,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				2F4CD9751E7D55DA0025D383 /* Persistency */,
+				2F4CD9741E7D55C90025D383 /* Application Logic */,
 				2F2499021CCA2A8B006059EA /* CurAddress.entitlements */,
 				308ACE58106C19A60042E5C1 /* ReadMe.md */,
 				2F4CD96B1E7ABBEA0025D383 /* Controller */,
@@ -137,6 +145,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F4CD9781E8570870025D383 /* Taxi.jpg */,
 				2F4CD9721E7B04740025D383 /* TestUser.jpg */,
 				2F5979771CD69AEE0062EFFD /* Announce.aiff */,
 				8D1107310486CEB800E47090 /* CurrentAddress-Info.plist */,
@@ -192,6 +201,21 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		2F4CD9741E7D55C90025D383 /* Application Logic */ = {
+			isa = PBXGroup;
+			children = (
+				2F4CD9761E7D57360025D383 /* MapInteractor.swift */,
+			);
+			name = "Application Logic";
+			sourceTree = "<group>";
+		};
+		2F4CD9751E7D55DA0025D383 /* Persistency */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Persistency;
+			sourceTree = "<group>";
+		};
 		2FB766011CE4FAC60045515F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +224,7 @@
 				2F4CD9671E79B3630025D383 /* ProfilePictureCell.swift */,
 				2F4CD9661E79B3630025D383 /* CurAddress-Bridging-Header.h */,
 				2F4CD9701E7AF79B0025D383 /* ProfileTextCell.swift */,
+				2F5432C21E85B48100463F70 /* TaxiViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -281,6 +306,7 @@
 				60909F5A1BD709E1008F5E04 /* Images.xcassets in Resources */,
 				6078EA851BD82BD500CD1C1A /* MainStoryboard.storyboard in Resources */,
 				604E3C1C1BD824EE00D40362 /* LaunchScreen.storyboard in Resources */,
+				2F4CD9791E8570870025D383 /* Taxi.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +320,10 @@
 				2F4CD9681E79B3630025D383 /* ProfilePictureCell.swift in Sources */,
 				2F14BFB51C7E6295002286BA /* MKMapView+ZoomLevel.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				2F5432C31E85B48100463F70 /* TaxiViewController.swift in Sources */,
 				2F7E90BE1C9ADF20001F3331 /* UIImage+Color.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				2F4CD9771E7D57360025D383 /* MapInteractor.swift in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MapViewController.m in Sources */,
 				2F4CD9711E7AF79B0025D383 /* ProfileTextCell.swift in Sources */,
 				2FB766041CE4FB4E0045515F /* RidersTableViewController.m in Sources */,

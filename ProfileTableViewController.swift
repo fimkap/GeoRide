@@ -13,8 +13,8 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(ProfilePictureCell.self, forCellReuseIdentifier: ProfilePictureCell.reuseIdentifier)
-        tableView.register(ProfileTextCell.self, forCellReuseIdentifier: ProfileTextCell.reuseIdentifier)
+        // tableView.register(ProfilePictureCell.self, forCellReuseIdentifier: ProfilePictureCell.reuseIdentifier)
+        //tableView.register(ProfileTextCell.self, forCellReuseIdentifier: ProfileTextCell.reuseIdentifier)
 
 
         // Uncomment the following line to preserve selection between presentations

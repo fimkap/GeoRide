@@ -14,11 +14,13 @@ class ProfileTextCell: UITableViewCell {
 
   static let reuseIdentifier = "\(ProfileTextCell.self)"
 
-  private var textf = String()
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var valueLabel: UILabel!
 
   var user: User! {
     didSet {
-      textf = user.name
+      titleLabel.text = "Name:"
+      valueLabel.text = user.name
     }
   }
 
@@ -35,12 +37,12 @@ class ProfileTextCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
-  override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
+  // override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+  //   super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-  }
+  // }
 
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("\(#function) has not been implemented")
-  }
+  // required init?(coder aDecoder: NSCoder) {
+  //   fatalError("\(#function) has not been implemented")
+  // }
 }
