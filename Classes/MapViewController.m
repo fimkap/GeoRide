@@ -168,7 +168,8 @@
 		if ((placemarks != nil) && (placemarks.count > 0)) {
 			// If the placemark is not nil then we have at least one placemark. Typically there will only be one.
 			self.placemark = placemarks[0];
-      MapInteractor.placemark = self.placemark;
+      MapInteractor.placemark = self.placemark; // TODO: remove
+      User.testUser.placemark = self.placemark;
 			
 			// we have received our current location, so enable the "Get Current Address" button
             self.getAddressButton.enabled = YES;

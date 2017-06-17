@@ -7,6 +7,7 @@
 //
 
 #import "RideDataManager.h"
+#import "Geo_Ride-Swift.h"
 
 @interface RideDataManager ()
 @property (nonatomic,strong) CKDatabase *publicDB;
@@ -26,14 +27,24 @@
 
 - (void)initUserID
 {
-    [[CKContainer defaultContainer] fetchUserRecordIDWithCompletionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error){
-        if (!error) {
-            self.userRecID = recordID;
-            NSLog(@"Read User Record ID. Record Name: %@", recordID.recordName);
-        }
-        else
-            NSLog(@"Error fetching user record ID %@", error.description);
-    }];
+  //__weak RideDataManager* welf = self;
+  [[CKContainer defaultContainer] fetchUserRecordIDWithCompletionHandler:^(CKRecordID * _Nullable recordID, NSError * _Nullable error){
+    if (!error) {
+      self.userRecID = recordID;
+      NSLog(@"Read User Record ID. Record Name: %@", recordID.recordName);
+      [self fetchUserInfo:recordID];
+    }
+    else
+      NSLog(@"Error fetching user record ID %@", error.description);
+  }];
+}
+
+- (void)fetchUserInfo:(CKRecordID*)recordID
+{
+  [[CKContainer defaultContainer] discoverUserIdentityWithUserRecordID:recordID completionHandler:^(CKUserIdentity * _Nullable userInfo, NSError * _Nullable error) {
+    NSLog(@"%@,%@", userInfo.nameComponents.givenName, userInfo.nameComponents.familyName);
+    User.testUser.name = userInfo.nameComponents.givenName;
+  }];
 }
 
 - (void)storeLocation:(CLLocationCoordinate2D)destination riderName:(NSString*)name

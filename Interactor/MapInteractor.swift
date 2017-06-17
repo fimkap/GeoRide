@@ -9,7 +9,11 @@
 import UIKit
 import MapKit
 
-public class MapInteractor: NSObject {
+protocol Placemarked {
+  func locateOnMap() -> (String?, String?)
+}
+
+public class MapInteractor: NSObject, Placemarked {
   
 //  enum City: String {
 //    case Fuengirola = "Fuengirola"
@@ -56,6 +60,11 @@ public class MapInteractor: NSObject {
       // Fallback on earlier versions
     }
   
+  }
+
+  // Return street name with number and locality (city) name
+  func locateOnMap() -> (String?, String?) {
+    return (User.testUser.placemark.thoroughfare! + " " + User.testUser.placemark.subThoroughfare!, User.testUser.placemark.locality!)
   }
   
   func locationCity() -> String {

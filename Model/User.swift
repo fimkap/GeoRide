@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import MapKit
 
-struct User {
+// TODO: use struct when change to Swift for the caller
+@objc class User: NSObject {
 
   // MARK: Properties
 
@@ -17,6 +19,7 @@ struct User {
   var name: String
   var age: Int
   var language: String
+  var placemark: MKPlacemark
 
   enum ProfileField {
       case image 
@@ -32,7 +35,7 @@ struct User {
       ]
   }
 
-  static let testUser = User(UIImage(named: "TestUser.jpg")!, "Greg", 52, "Spanish")
+  static var testUser = User(UIImage(named: "TestUser.jpg")!, "Greg", 52, "Spanish")
 
   // MARK: Initialization
   init(_ image: UIImage, _ name: String, _ age: Int, _ language: String) {
@@ -40,5 +43,11 @@ struct User {
     self.name = name
     self.age = age
     self.language = language
+    if #available(iOS 10.0, *) {
+      self.placemark = MKPlacemark(coordinate: CLLocationCoordinate2D())
+    } else {
+      // Fallback on earlier versions
+      self.placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(), addressDictionary: nil)
+    }
   }
 }

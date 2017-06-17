@@ -25,8 +25,11 @@ class TaxiViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    street.text = interactor.locationStreet()
-    city.text = interactor.locationCity()
+    // street.text = interactor.locationStreet()
+    // city.text = interactor.locationCity()
+    (street.text, city.text) = interactor.locateOnMap()
+    // city.text = interactor.locateOnMap().0
+    // street.text = interactor.locateOnMap().1
   }
 
     override func didReceiveMemoryWarning() {
